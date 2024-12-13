@@ -1,0 +1,108 @@
+
+
+/* Body Styling */
+body {
+    line-height: 1.6;
+    color: black;
+    background-color: #bdbdf3;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header Styling */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Navigation Bar Styling */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #555;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: #444;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.navbar {
+    background-color: #444;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: #f4f4f9;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: medium;
+  }
+  
+  .navbar a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d8d8da;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.text {
+    width: 60%; /* Adjust width as needed */
+}
+
+.right-image {
+    width: 35%; /* Set image width */
+    float: right; /* Floats the image to the right side */
+    margin-left: 20px; /* Adds space between text and image */
+}
+

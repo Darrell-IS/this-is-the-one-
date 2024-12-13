@@ -1,0 +1,40 @@
+/* styles.css */
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    transition: color 0.5s ease;
+}
+
+/* Gradient text color */
+.gradient-title {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Flashing colors */
+.flashing-title {
+    animation: colorChange 3s infinite;
+}
+
+@keyframes colorChange {
+    0% { color: red; }
+    25% { color: orange; }
+    50% { color: yellow; }
+    75% { color: green; }
+    100% { color: blue; }
+}
+
+/* Hover effect */
+h1:hover {
+    color: purple;
+}
+
+/* Shadow effect */
+.shadow-title {
+    color: white;
+    text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.7), 
+                 -3px -3px 5px rgba(0, 255, 0, 0.7),
+                 3px -3px 5px rgba(0, 0, 255, 0.7);
+}

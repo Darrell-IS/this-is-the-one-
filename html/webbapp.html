@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Guessing Game</title>
+    <link rel="webstyle" href="../webstyle/webstyle.css">
+</head>
+<body>
+    <link rel="stylesheet" href="../scratchstyle/scratch.css">
+    <div class="navbar"><a href="../html/scratchpage.html">Back to Skiing</a></div>
+   
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Word Guessing Game</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            .game-container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+    
+            h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+    
+            input {
+                padding: 10px;
+                font-size: 16px;
+                width: 60%;
+                margin: 10px 0;
+            }
+    
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+    
+            .result {
+                margin-top: 10px;
+                font-size: 18px;
+            }
+    
+            .remaining-attempts {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+    
+            .restart-btn {
+                margin-top: 20px;
+                background-color: #f44336;
+            }
+    
+            .restart-btn:hover {
+                background-color: #e53935;
+            }
+    
+            .hidden-word {
+                font-size: 20px;
+                letter-spacing: 5px;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="game-container">
+            <h1>Guess the Word</h1>
+            <p>Try to guess the word, one letter at a time:</p>
+            <input type="text" id="userGuess" maxlength="1" placeholder="Enter a letter">
+            <button id="guessButton">Guess</button>
+            <p class="result" id="result"></p>
+            <p class="remaining-attempts" id="remainingAttempts"></p>
+            <p class="hidden-word" id="hiddenWord"></p>
+            <button class="restart-btn" id="restartButton" style="display:none;">Restart Game</button>
+        </div>
+    
+        <script>
+            const words = ["javascript", "python", "html", "css", "react", "node", "angular"];
+            let selectedWord = words[Math.floor(Math.random() * words.length)];
+            let guessedLetters = [];
+            let attemptsLeft = 10;
+    
+            const guessButton = document.getElementById("guessButton");
+            const restartButton = document.getElementById("restartButton");
+            const result = document.getElementById("result");
+            const remainingAttempts = document.getElementById("remainingAttempts");
+            const hiddenWord = document.getElementById("hiddenWord");
+            const userGuess = document.getElementById("userGuess");
+    
+            function updateHiddenWord() {
+                let displayWord = '';
+                for (let i = 0; i < selectedWord.length; i++) {
+                    displayWord += guessedLetters.includes(selectedWord[i]) ? selectedWord[i] : '_';
+                }
+                hiddenWord.textContent = displayWord;
+            }
+    
+            function checkGameOver() {
+                if (attemptsLeft <= 0) {
+                    result.textContent = "Game Over! The word was: " + selectedWord;
+                    result.style.color = "red";
+                    guessButton.disabled = true;
+                    restartButton.style.display = "inline-block";
+                } else if (!hiddenWord.textContent.includes('_')) {
+                    result.textContent = "Congratulations! You've guessed the word!";
+                    result.style.color = "green";
+                    guessButton.disabled = true;
+                    restartButton.style.display = "inline-block";
+                }
+            }
+    
+            guessButton.addEventListener("click", function() {
+                const guess = userGuess.value.toLowerCase();
+                if (guess && !guessedLetters.includes(guess)) {
+                    guessedLetters.push(guess);
+    
+                    if (selectedWord.includes(guess)) {
+                        result.textContent = "Good guess!";
+                        result.style.color = "green";
+                    } else {
+                        attemptsLeft--;
+                        result.textContent = "Incorrect guess!";
+                        result.style.color = "red";
+                    }
+    
+                    updateHiddenWord();
+                    remainingAttempts.textContent = `Attempts remaining: ${attemptsLeft}`;
+    
+                    checkGameOver();
+                } else {
+                    result.textContent = "Already guessed";
+                    result.style.color = "orange";
+                }
+    
+                userGuess.value = '';
+                userGuess.focus();
+            });
+    
+            restartButton.addEventListener("click", function() {
+                selectedWord = words[Math.floor(Math.random() * words.length)];
+                guessedLetters = [];
+                attemptsLeft = 10;
+                result.textContent = '';
+                remainingAttempts.textContent = `Attempts remaining: ${attemptsLeft}`;
+                hiddenWord.textContent = '_'.repeat(selectedWord.length);
+                guessButton.disabled = false;
+                restartButton.style.display = "none";
+                userGuess.value = '';
+                userGuess.focus();
+            });
+    
+            // Initial update
+            updateHiddenWord();
+            remainingAttempts.textContent = `Attempts remaining: ${attemptsLeft}`;
+        </script>
+
+        
+    </body>
+    </html>
+       
+    
+</body>
+
+</html>
